@@ -26,7 +26,8 @@ let insertUsuario = (req, res) => {
                     then
                     (
                         (newUsuario) => {
-                            res.send(newUsuario); //devuelvo resultado query
+                            // res.send(newUsuario); //devuelvo resultado query
+                            res.send(true);
                             console.log("insertó OK al usuario en la base de datos");
                         },
                         (err) => { console.log(err); }
@@ -53,7 +54,8 @@ let insertComentario = (req, res) => {
         then
         (
             (newComentario) => {
-                res.send(newComentario); //devuelvo resultado query
+                // res.send(newComentario); //devuelvo resultado query
+                res.send(true);
                 console.log("insertó OK el comentario de la peli en la base de datos");
             },
             (err) => { console.log(err); }
@@ -90,7 +92,8 @@ let insertPelicula = (req, res) => {
         then
         (
             (newPelicula) => {
-                res.send(newPelicula); //devuelvo resultado query
+                // res.send(newPelicula); //devuelvo resultado query
+                res.send(true);
                 console.log("insertó OK la pelicula en la base de datos");
             },
             (err) => { console.log(err); }
@@ -109,7 +112,8 @@ let updatePassUsuario = (req, res) => {
             usuario
                 .save()
                 .then(() => {
-                    res.jsonp({ usuario }); // retornamos el usuario updeteado
+                    // res.jsonp({ usuario }); // retornamos el usuario updeteado
+                res.send(true);
                 });
         });
 };
