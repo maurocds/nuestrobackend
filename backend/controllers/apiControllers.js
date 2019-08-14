@@ -175,7 +175,16 @@ let logueoUsuario = (req, res) => {
                 console.log(respuestaQuery);
 
                 if (respuestaQuery !== null) {
-                    res.send(true); //devuelvo resultado query
+                    //res.send(true); //devuelvo resultado query
+                    var datosDelUsuario = Usuarios({
+                        nombre: respuestaQuery.nombre,
+                        apellido: respuestaQuery.apellido,
+                        mail: respuestaQuery.mail,
+                        contrasena: respuestaQuery.contrasena
+                    });
+
+                    res.send(datosDelUsuario);  // retorno datos del usuario para consumir desde el front
+
                 } else {
                     res.send(false); //devuelvo false porque no coinciden el par usuario/contrasena
                 }
