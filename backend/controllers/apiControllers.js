@@ -3,7 +3,7 @@ var Comentarios = require('../models/ComentarioModel');
 var Peliculas = require('../models/PeliculaModel');
 var bodyParser = require('body-parser');
 
-// Listo!
+// Listo!!
 let insertUsuario = (req, res) => {
     console.log("entré a insertUsuario");
     console.log(req.body);
