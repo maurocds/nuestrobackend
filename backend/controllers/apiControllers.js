@@ -13,16 +13,30 @@ let insertUsuario = (req, res) => {
         mail: req.body.mail,
         contrasena: req.body.contrasena
     });
-    console.log("guardó OK todos los datos del usuario a insertar en la base de datos");
-    newUsuario.save().
-        then
-        (
-            (newUsuario) => {
-                res.send(newUsuario); //devuelvo resultado query
-                console.log("insertó OK al usuario en la base de datos");
-            },
-            (err) => { console.log(err); }
-        )
+    Usuarios.findOne({ mail: req.body.mail }).then(
+        respuestaQuery => {
+            console.log("muestro el respuestaQuery");
+            console.log(respuestaQuery);
+            if (respuestaQuery !== null) {
+                console.log("El usuario ya existe");
+                res.send(false); //devuelvo false porque el usurio ya existe
+            } else {
+                console.log("guardó OK todos los datos del usuario a insertar en la base de datos");
+                newUsuario.save().
+                    then
+                    (
+                        (newUsuario) => {
+                            res.send(newUsuario); //devuelvo resultado query
+                            console.log("insertó OK al usuario en la base de datos");
+                        },
+                        (err) => { console.log(err); }
+                    )
+            }
+        },
+        err => {
+            console.log(err);
+        }
+    )
 };
 
 // Listo!
